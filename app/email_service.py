@@ -1,5 +1,6 @@
 # app/email_service.py
 
+from logging import error, exception
 import smtplib
 import os
 from dotenv import load_dotenv
@@ -80,6 +81,7 @@ def send_email(subject="[Daily Briefing] This is a test", html="<p>Hello World</
         print("Successfully sent email")
     except Exception as SMTPException:
         print("Error: unable to send email")
+    
 
 
         
