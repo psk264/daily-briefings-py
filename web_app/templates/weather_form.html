@@ -1,4 +1,5 @@
-{% extends "layout.html" %}
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "weather_form" %}
 
 {% block content %}
 
@@ -7,10 +8,6 @@
     <p>Request an hourly forecast for your zip code...</p>
 
     <form action="/weather/forecast" method="POST">
-
-        <label>Country Code:</label>
-        <input type="text" name="country_code" placeholder="US" value="US">
-        <br>
 
         <label>Zip Code:</label>
         <input type="text" name="zip_code" placeholder="20057" value="20057">
