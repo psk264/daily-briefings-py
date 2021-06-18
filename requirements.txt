@@ -19,3 +19,4 @@ pytest
 
 flask
 pgeocode
+gunicorn
