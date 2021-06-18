@@ -1,27 +1,5 @@
 # web_app/routes/weather_routes.py
 
-from flask import Blueprint, request, jsonify
-
-from app.weather_service import get_hourly_forecasts
-
-weather_routes = Blueprint("weather_routes", __name__)
-
-@weather_routes.route("/weather/forecast.json")
-def weather_forecast_api():
-    print("WEATHER FORECAST (API)...")
-    print("URL PARAMS:", dict(request.args))
-
-    country_code = request.args.get("country_code") or "US"
-    zip_code = request.args.get("zip_code") or "20057"
-
-    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
-    if results:
-        return jsonify(results)
-    else:
-        return jsonify({"message":"Invalid Geography. Please try again."}), 404
-
-# web_app/routes/weather_routes.py
-
 from flask import Blueprint, request, jsonify, render_template, redirect, flash
 
 from app.weather_service import get_hourly_forecasts
@@ -63,9 +41,9 @@ def weather_forecast():
 
     results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
     if results:
-        #flash("Weather Forecast Generated Successfully!", "success")
+        flash("Weather Forecast Generated Successfully!", "success")
         return render_template("weather_forecast.html", country_code=country_code, zip_code=zip_code, results=results)
     else:
-        #flash("Geography Error. Please try again!", "danger")
+        flash("Geography Error. Please try again!", "danger")
         return redirect("/weather/form")
 
