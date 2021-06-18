@@ -9,9 +9,12 @@ pgeocode
 pandas
 requests
 sendgrid==6.6.0
+# smtplib
 
 #
 # TEST
 #
 
 pytest
+
+flask
